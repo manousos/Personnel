@@ -1,0 +1,37 @@
+<?page title="Employees" contentType="text/html;charset=UTF-8"?>
+<zk>
+<window title="Seminar Types" border="none" width="100%" height="100%"
+		xmlns:n="native"
+		apply="org.zkoss.bind.BindComposer"	
+		viewModel="@id('vm') @init('com.personnel.ui.SeminarTypesVM')">
+		
+	<style src="/css/homework.css"></style>		
+	
+	<hlayout>
+		<div hflex="1" />
+		<button label="Add Seminar Type" onClick="@command('add-semType')" />
+		<button label="Refresh" onClick="@command('refresh-semType')" />
+	</hlayout>
+
+	<grid model="@load(vm.seminarTypes)" vflex="true" sclass="grid-no-hover" emptyMessage="No seminar types...">
+					
+		<columns>
+			<column label="Code" width="180px" align="center" />
+			<column label="Seminar type" sort="auto(name)" />
+			<column label="Notes" sort="auto(notes)" />
+		</columns>
+      		
+		<template name="model" var="st">
+			<row>
+				<a onClick="@command('edit-semType', seminarType=st)">
+					<label value="@load(st.seminarTypeId)" />
+				</a>
+				<label value="@load(st.name)" />
+				<label value="@load(st.notes)" />
+			</row>
+		</template>
+	</grid>
+
+</window>
+</zk>
+		

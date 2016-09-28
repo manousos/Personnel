@@ -1,0 +1,43 @@
+<?page title="Payroll Editor" contentType="text/html;charset=UTF-8"?>
+<zk>
+<window xmlns:n="native" title="Payroll Editor" border="none" width="40%" height="40%" sclass="rounded-border" 
+		mode="overlapped" position="center,center" closable="true"
+		apply="org.zkoss.bind.BindComposer" 
+		viewModel="@id('vm')@init('com.personnel.ui.PayrollEditorVM')" >
+			 
+<style src="/css/homework.css"></style>
+
+<vlayout>
+
+<grid vflex="true" hflex="true" sclass="grid-form">
+	<columns>
+		<column width="150px" />
+		<column hflex="1" />
+	</columns>
+	<rows>		
+		<row>
+			Year
+			<textbox value="@bind(vm.payroll.year)" sclass="form-control" width="300px" />
+		</row>
+		<row>
+			Month
+			<textbox value="@bind(vm.payroll.month)" sclass="form-control" width="300px" />
+		</row>		
+		<row>
+			Description
+			<textbox value="@bind(vm.payroll.description)" sclass="form-control" width="300px" />
+		</row>
+	</rows>
+</grid>
+
+<hlayout>
+	<div hflex="1" />
+	<button label="Save" onClick="@command('save-payroll')"/>
+	
+	<button label="Cancel" onClick="@global-command('close-payroll-editor')"/>
+</hlayout>
+		        
+</vlayout>
+
+</window>
+</zk>

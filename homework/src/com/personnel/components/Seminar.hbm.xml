@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.personnel.components.Seminar" table="Seminars">
+		<id name="seminarId" type="java.lang.Integer">
+			<generator class="identity" />
+		</id>
+		
+		<many-to-one name="employee" class="com.personnel.components.Employee" fetch="select" cascade="all">
+			<column name="EmployeeId" not-null="true" />
+		</many-to-one>
+		<many-to-one name="seminarType" class="com.personnel.components.SeminarType" fetch="select" cascade="all">
+			<column name="SeminarTypeId" not-null="true" />
+		</many-to-one>
+		
+		<property name="seminarDate" type="java.util.Date" not-null="true" />
+		<property name="notes" type="java.lang.String" length="250" />
+	</class>
+</hibernate-mapping>
+
+
+
+
+ 

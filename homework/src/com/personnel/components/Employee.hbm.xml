@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.personnel.components.Employee" table="Employees">
+		<id name="employeeId" type="java.lang.Integer">
+			<column name="EmployeeId" />
+			<generator class="identity" />
+		</id>
+		<property name="employeeCode" type="java.lang.Integer" not-null="true" />
+		<property name="lastname" type="java.lang.String" length="50" not-null="true" />
+		<property name="firstname" type="java.lang.String" length="50" not-null="true" />
+		<property name="middlename" type="java.lang.String" length="50" />
+		<property name="sex" type="java.lang.Character" length="1" />
+		<property name="photo" type="java.lang.String" length="255" />
+		<property name="salary" type="java.lang.Double" />
+		<property name="active" type="java.lang.Boolean" />
+		<set name="employeePayrolls" table="EmployeePayrolls" lazy="true">
+			<key>
+				<column name="EmployeeId" />
+			</key>
+			<one-to-many class="com.personnel.components.EmployeePayroll" />
+		</set>
+		<set name="seminars" table="Seminars" lazy="true" cascade="all" fetch="select">
+			<key>
+				<column name="EmployeeId" />
+			</key>
+			<one-to-many class="com.personnel.components.Seminar" />
+		</set>
+	</class>
+</hibernate-mapping>

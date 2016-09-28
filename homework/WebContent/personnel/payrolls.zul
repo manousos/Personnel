@@ -1,0 +1,39 @@
+<?page title="Payrolls" contentType="text/html;charset=UTF-8"?>
+<zk>
+<window title="Payrolls" border="none" width="100%" height="100%"
+		xmlns:n="native"
+		apply="org.zkoss.bind.BindComposer"	
+		viewModel="@id('vm') @init('com.personnel.ui.PayrollsVM')">
+		
+	<style src="/css/homework.css"></style>		
+	
+	<hlayout>
+		<div hflex="1" />
+		<button label="Add Payroll" onClick="@command('add-payroll')" />
+	</hlayout>
+
+	<grid model="@load(vm.payrolls)" vflex="true" sclass="grid-no-hover" emptyMessage="No payrolls...">
+					
+		<columns>
+			<column label="PayrollId" width="180px" align="center" />
+			<column label="Year" sort="auto(year)" />
+			<column label="Month" sort="auto(month)" />
+			<column label="Description" />
+			<column>Calculate</column>
+		</columns>
+      		
+		<template name="model" var="p">
+			<row>
+				<a onClick="@command('edit-payroll', payroll=p)">
+					<label value="@load(p.payrollId)" />
+				</a>
+				<label value="@load(p.year)" />
+				<label value="@load(p.month)" />
+				<label value="@load(p.description)" />
+				<button label="Calculate Payroll" onClick="@command('calculate-payroll',payroll=p)" />
+			</row>
+		</template>
+	</grid>
+
+</window>
+</zk>

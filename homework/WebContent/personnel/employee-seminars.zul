@@ -1,0 +1,38 @@
+<?page title="Employee Seminars" contentType="text/html;charset=UTF-8"?>
+<zk>
+<window title="Employee Seminars" border="none" width="100%" height="100%"
+		xmlns:n="native"
+		apply="org.zkoss.bind.BindComposer"	
+		viewModel="@id('vm') @init('com.personnel.ui.EmployeeSeminarsVM')">
+		
+	<style src="/css/homework.css"></style>		
+	
+	<hlayout>
+		<div hflex="1" />
+		Employee Id <textbox value="@bind(vm.employeeId)" />
+		<button label="Find Seminars" onClick="@command('find-seminars')" />		
+	</hlayout>
+
+	<grid model="@load(vm.employeeSeminars)" vflex="true" sclass="grid-no-hover" emptyMessage="No seminars...">
+					
+		<columns>
+		<column label="Seminar Code" />
+			<column label="Seminar Date" sort="auto(seminarDate)" />
+			<column label="Notes" />
+				<column label="Type"  />
+		</columns>
+      		
+		<template name="model" var="s">
+			<row>
+			<a onClick="@command('edit-employeeSeminar', seminar=s)">
+				<label value="@load(s.seminarId)" />
+			</a>
+				<label value="@load(s.seminarDate)" />
+				<label value="@load(s.notes)" />				
+				<label value="@load(s.seminarType.name)" />
+			</row>
+		</template>
+	</grid>
+
+</window>
+</zk>

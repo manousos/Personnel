@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.personnel.components.EmployeePayroll" table="EmployeePayrolls">
+		<id name="payableId" type="java.lang.Integer">
+			<generator class="identity" />
+		</id>
+		<many-to-one name="payroll" class="com.personnel.components.Payroll" fetch="select" cascade="all">
+			<column name="PayrollId" not-null="true" />
+		</many-to-one>
+		<many-to-one name="employee" class="com.personnel.components.Employee" fetch="select" cascade="all">
+			<column name="EmployeeId" not-null="true" />
+		</many-to-one>
+
+		<property name="salary" type="java.lang.Double" />
+		<property name="tax" type="java.lang.Double" />
+		<property name="netPayable" type="java.lang.Double" />
+
+
+
+	</class>
+</hibernate-mapping>

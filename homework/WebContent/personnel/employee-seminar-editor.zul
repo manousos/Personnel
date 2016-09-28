@@ -1,0 +1,48 @@
+<?page title="Employee Seminar Editor" contentType="text/html;charset=UTF-8"?>
+<zk>
+<window xmlns:n="native" title="Employee Seminar Editor" border="none" width="40%" height="40%" sclass="rounded-border" 
+		mode="overlapped" position="center,center" closable="true"
+		apply="org.zkoss.bind.BindComposer" 
+		viewModel="@id('vm')@init('com.personnel.ui.EmployeeSeminarEditorVM')" >
+			 
+<style src="/css/homework.css"></style>
+
+<vlayout>
+
+<grid vflex="true" hflex="true" sclass="grid-form">
+	<columns>
+		<column width="150px" />
+		<column hflex="1" />
+	</columns>
+	<rows>
+	
+		<row>
+			Code
+			<textbox value="@bind(vm.seminar.seminarId)" disabled="true" sclass="form-control" width="300px" />
+		</row>
+		<row>
+			Date
+			<datebox value="@bind(vm.seminar.seminarDate)"  cols="12" locale="de"  width="300px" />
+		</row>
+		<row>
+			Notes
+			<textbox value="@bind(vm.seminar.notes)" sclass="form-control" width="300px" />
+		</row>
+		<row>
+			Type
+			<textbox value="@bind(vm.seminar.seminarType.name)" sclass="form-control" width="300px" />
+		</row>	
+	</rows>
+</grid>
+
+<hlayout>
+	<div hflex="1" />
+	<button label="Save" onClick="@command('save-employeeSeminar')"/>
+	
+	<button label="Cancel" onClick="@global-command('close-employeeSeminar-editor')"/>
+</hlayout>
+		        
+</vlayout>
+
+</window>
+</zk>

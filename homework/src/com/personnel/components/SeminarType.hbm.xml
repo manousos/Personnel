@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.personnel.components.SeminarType" table="SeminarTypes">
+		<id name="seminarTypeId" type="java.lang.Integer">
+			<column name="SeminarTypeId" />
+			<generator class="identity" />
+		</id>
+		<property name="seminarTypeCode" type="java.lang.String" length="12" not-null="true" />
+		<property name="name" type="java.lang.String" length="128" not-null="true" />
+		<property name="notes" type="java.lang.String" />
+		<property name="active" type="java.lang.Boolean" />
+		<set name="seminars" table="Seminars" lazy="true" cascade="all">
+			<key>
+				<column name="SeminarTypeId" />
+			</key>
+			<one-to-many class="com.personnel.components.Seminar" />
+		</set>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,49 @@
+<?page title="Seminar Types Editor" contentType="text/html;charset=UTF-8"?>
+<zk>
+<window xmlns:n="native" title="Seminar Types Editor" border="none" width="40%" height="40%" sclass="rounded-border" 
+		mode="overlapped" position="center,center" closable="true"
+		apply="org.zkoss.bind.BindComposer" 
+		viewModel="@id('vm')@init('com.personnel.ui.SeminarTypesEditorVM')" >
+			 
+<style src="/css/homework.css"></style>
+
+<vlayout>
+
+<grid vflex="true" hflex="true" sclass="grid-form">
+	<columns>
+		<column width="150px" />
+		<column hflex="1" />
+	</columns>
+	<rows>
+	
+		<row>
+			Seminar Type Code
+			<textbox value="@bind(vm.seminarType.seminarTypeCode)" sclass="form-control" width="300px" />
+		</row>
+		<row>
+			Name
+			<textbox value="@bind(vm.seminarType.name)" sclass="form-control" width="300px" />
+		</row>
+		<row>
+			Notes
+			<textbox value="@bind(vm.seminarType.notes)" sclass="form-control" width="300px" />
+		</row>	
+		<row>
+			Active
+			<checkbox checked="@bind(vm.seminarType.active)" sclass="form-control" width="300px" />
+		</row>		
+	</rows>
+</grid>
+
+<hlayout>
+	<div hflex="1" />
+	<button label="Save" onClick="@command('save-smt')"/>
+	<button label="Delete" onClick="@command('delete-smt')"/>
+	
+	<button label="Cancel" onClick="@global-command('close-smt-editor')"/>
+</hlayout>
+		        
+</vlayout>
+
+</window>
+</zk>

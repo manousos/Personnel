@@ -1,0 +1,57 @@
+<?page title="Employee Editor" contentType="text/html;charset=UTF-8"?>
+<zk>
+<window xmlns:n="native" title="Employee Editor" border="none" width="40%" height="40%" sclass="rounded-border" 
+		mode="overlapped" position="center,center" closable="true"
+		apply="org.zkoss.bind.BindComposer" 
+		viewModel="@id('vm')@init('com.personnel.ui.EmployeeEditorVM')" >
+			 
+<style src="/css/homework.css"></style>
+
+<vlayout>
+
+<grid vflex="true" hflex="true" sclass="grid-form">
+	<columns>
+		<column width="150px" />
+		<column hflex="1" />
+	</columns>
+	<rows>
+	
+		<row>
+			Employee Code
+			<textbox value="@bind(vm.employee.employeeCode)" sclass="form-control" width="300px" />
+		</row>
+		<row>
+			Lastname
+			<textbox value="@bind(vm.employee.lastname)" sclass="form-control" width="300px" />
+		</row>
+		<row>
+			Firstname
+			<textbox value="@bind(vm.employee.firstname)" sclass="form-control" width="300px" />
+		</row>
+		<row>
+			Middlename
+			<textbox value="@bind(vm.employee.middlename)" sclass="form-control" width="300px" />
+		</row>
+		<row>
+			Sex
+			<textbox value="@bind(vm.employee.sex)" sclass="form-control" width="300px" />
+		</row>
+		<row>
+			Salary
+			<textbox value="@bind(vm.employee.salary)" sclass="form-control" width="300px" />
+		</row>
+	</rows>
+</grid>
+
+<hlayout>
+	<div hflex="1" />
+	<button label="Save" onClick="@command('save-employee')"/>
+	<button label="Delete" onClick="@command('delete-employee')"/>
+	
+	<button label="Cancel" onClick="@global-command('close-employee-editor')"/>
+</hlayout>
+		        
+</vlayout>
+
+</window>
+</zk>
